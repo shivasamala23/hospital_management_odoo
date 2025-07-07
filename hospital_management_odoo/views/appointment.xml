@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+    <record id="view_hospital_appointment_calendar" model="ir.ui.view">
+        <field name="name">hospital.appointment.calendar</field>
+        <field name="model">hospital.appointment</field>
+        <field name="arch" type="xml">
+            <calendar string="Appointments Calendar" date_start="start_time" date_stop="end_time" color="doctor_id">
+                <field name="appointment_id"/>
+                <field name="patient_id"/>
+                <field name="doctor_id"/>
+                <field name="start_time"/>
+                <field name="end_time"/>
+            </calendar>
+        </field>
+    </record>
+
     <record id="appointment_details_view_form" model="ir.ui.view">
         <field name="name">appointment_details_form</field>
         <field name="model">hospital.appointment</field>
@@ -21,8 +35,9 @@
                     <group>
                         <field name="patient_id"/>
                         <field name="name"/>
-                        <field name="appointment_date"/>
-<!--                        <field name="doctor_id"/>-->
+                        <field name="start_time"/>
+                        <field name="end_time"/>
+                        <field name="doctor_id"/>
                     </group>
                 </sheet>
 
@@ -38,16 +53,17 @@
                 <field name="name"/>
                 <field name="patient_id"/>
                 <field name="date_of_creation"/>
-                <field name="appointment_date"/>
+                <field name="start_time"/>
+                <field name="end_time"/>
                 <field name="appointment_status"/>
-<!--                <field name="doctor_id"/>-->
+                <field name="doctor_id"/>
             </list>
         </field>
     </record>
     <record id="actions_appointment_details" model="ir.actions.act_window">
         <field name="name">Appointment</field>
         <field name="res_model">hospital.appointment</field>
-        <field name="view_mode">list,kanban,form</field>
+        <field name="view_mode">list,kanban,form,calendar</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create a new Appointment

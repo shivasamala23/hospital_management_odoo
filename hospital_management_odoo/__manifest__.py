@@ -31,6 +31,7 @@
         # # Views
         'views/patients_view.xml',
         'views/appointment.xml',
+        'views/doctors.xml',
         'views/menus.xml',
         # 'views/doctor_view.xml',
         # 'views/ipd_view.xml',

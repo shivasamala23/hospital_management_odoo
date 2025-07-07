@@ -19,5 +19,11 @@
             parent="hospital_patients_root"
             action="actions_appointment_details"
             sequence="2"/>
+        <menuitem
+            id="doctors_main_menu"
+            name="Doctors"
+            parent="hospital_patients_root"
+            action="actions_doctors_details"
+            sequence="2"/>
     </data>
 </odoo>

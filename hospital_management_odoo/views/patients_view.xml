@@ -5,56 +5,84 @@
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
             <form>
-                <header>
-
-                </header>
+                <header></header>
                 <sheet>
+                    <!-- Ribbons -->
                     <widget name="web_ribbon" title="Expired"
                             bg_color="text-bg-danger"
-                            invisible="type_of_discharge != 'expired'"/>
+                            invisible="type_of_discharge != 'expired'" />
                     <widget name="web_ribbon" title="Discharged"
-                            invisible="type_of_discharge != 'discharged'"/>
-                    <field name="patient_img" widget="image" class="oe_avatar"  />
+                            invisible="type_of_discharge != 'discharged'" />
+
+                    <!-- Patient Image -->
+                    <field name="patient_img" widget="image" class="oe_avatar"/>
+
+                    <!-- Appointment Button -->
                     <div class="oe-button-box" name="button_box">
                         <button class="oe_stat_button" name="open_appointments" type="object" icon="fa-file-text-o">
                             <field name="appointments_count" widget="statinfo" string="Appointment Form"/>
                         </button>
                     </div>
+
+                    <!-- Patient ID title -->
                     <div class="oe_title">
                         <h1>
                             <field name="patient_id"/>
                         </h1>
                     </div>
+
+                    <!-- Sections with group layout -->
                     <group>
+                        <separator string="Admission Details"/>
                         <field name="date_of_admission"/>
                     </group>
+
                     <group>
+                        <separator string="Basic Info"/>
                         <field name="name"/>
-                        <field name="appointments"/>
                         <field name="dob"/>
                         <field name="age"/>
-                        <field name="blood_group"/>
                         <field name="gender"/>
+                        <field name="blood_group"/>
+                    </group>
+
+                    <group>
+                        <separator string="Contact Information"/>
                         <field name="contact_no"/>
                         <field name="email"/>
-                        <field name="type_of_discharge"/>
-                        <field name="expired_date" invisible="type_of_discharge != 'expired'"/>
-                        <field name="expired_reason" invisible="type_of_discharge != 'expired'"/>
-                        <field name="discharge_reason" invisible="type_of_discharge != 'discharged'"/>
-                        <field name="discharge_notes" invisible="type_of_discharge != 'discharged'"/>
                     </group>
-                    <group>
 
+                    <group>
+                        <separator string="Appointments"/>
+                        <field name="appointments"/>
+                    </group>
+
+                    <group>
+                        <separator string="Discharge Information"/>
+                        <field name="type_of_discharge"/>
+                    </group>
+
+                    <group invisible="type_of_discharge != 'expired'">
+                        <separator string="If Expired"/>
+                        <field name="expired_date"/>
+                        <field name="expired_reason"/>
+                    </group>
+
+                    <group invisible="type_of_discharge != 'discharged'">
+                        <separator string="If Discharged"/>
+                        <field name="discharge_reason"/>
+                        <field name="discharge_notes"/>
                     </group>
                 </sheet>
             </form>
         </field>
     </record>
+
     <record id="patients_details_view_tree" model="ir.ui.view">
         <field name="name">patients_details_list</field>
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
-            <list string="_tree">
+            <list string="Patients">
                 <field name="name"/>
                 <field name="patient_id"/>
                 <field name="date_of_admission"/>
@@ -64,7 +92,6 @@
                 <field name="gender"/>
                 <field name="contact_no"/>
                 <field name="email"/>
-                <!--                    <field name="doctor_id"/>-->
                 <field name="patient_img"/>
             </list>
         </field>
@@ -79,10 +106,9 @@
                 Create a new patient
             </p>
             <p>
-                Create and manage the patients that will be managed by Odoo from here. patients or appointments can be
+                Create and manage the patients that will be managed by Odoo from here. Patients or appointments can be
                 created and maintained from here.
             </p>
         </field>
     </record>
-
 </odoo>

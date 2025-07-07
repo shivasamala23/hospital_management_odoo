@@ -18,4 +18,13 @@
             <field name="company_id" eval="False"/>
         </record>
     </data>
+     <data>
+        <record id="seq_doctors_order" model="ir.sequence">
+            <field name="name">Hospital Doctors</field>
+            <field name="code">hospital.doctor</field>
+            <field name="prefix">DOC</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
 </odoo>

@@ -1,0 +1,128 @@
+<odoo>
+
+
+    <record id="doctors_details_view_form" model="ir.ui.view">
+        <field name="name">doctors_details_form</field>
+        <field name="model">hospital.doctor</field>
+        <field name="arch" type="xml">
+            <form>
+                <header></header>
+                <sheet>
+                    <!-- Ribbons -->
+                    <!--                    <widget name="web_ribbon" title="Expired"-->
+                    <!--                            bg_color="text-bg-danger"-->
+                    <!--                            invisible="type_of_discharge != 'expired'" />-->
+                    <!--                    <widget name="web_ribbon" title="Discharged"-->
+                    <!--                            invisible="type_of_discharge != 'discharged'" />-->
+
+                    <!-- Patient Image -->
+                    <field name="doctor_img" widget="image" class="oe_avatar"/>
+
+                    <!-- Appointment Button -->
+                    <div class="oe-button-box" name="button_box">
+                        <button class="oe_stat_button" name="open_appointments" type="object" icon="fa-file-text-o">
+                            <field name="appointments_count" widget="statinfo" string="Appointment Form"/>
+                        </button>
+                    </div>
+
+                    <!-- Patient ID title -->
+                    <div class="oe_title">
+                        <h1>
+                            <field name="doctor_id"/>
+                        </h1>
+                    </div>
+
+                    <!-- Sections with group layout -->
+                    <group>
+                        <separator string="Admission Details"/>
+                        <field name="date_of_joining"/>
+                    </group>
+
+                    <group>
+                        <separator string="Basic Info"/>
+                        <field name="name"/>
+                        <field name="dob"/>
+                        <field name="age"/>
+                        <field name="gender"/>
+                        <field name="blood_group"/>
+                        <field name="specialization"/>
+                    </group>
+
+                    <group>
+                        <separator string="Contact Information"/>
+                        <field name="contact_no"/>
+                        <field name="email"/>
+                    </group>
+
+                    <group>
+                        <separator string="Appointments"/>
+                        <!--                        <field name="appointments"/>-->
+                    </group>
+
+                    <!--                    <group>-->
+                    <!--                        <separator string="Discharge Information"/>-->
+                    <!--                        <field name="type_of_discharge"/>-->
+                    <!--                    </group>-->
+
+                    <!--                    <group invisible="type_of_discharge != 'expired'">-->
+                    <!--                        <separator string="If Expired"/>-->
+                    <!--                        <field name="expired_date"/>-->
+                    <!--                        <field name="expired_reason"/>-->
+                    <!--                    </group>-->
+
+                    <!--                    <group invisible="type_of_discharge != 'discharged'">-->
+                    <!--                        <separator string="If Discharged"/>-->
+                    <!--                        <field name="discharge_reason"/>-->
+                    <!--                        <field name="discharge_notes"/>-->
+                    <!--                    </group>-->
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="doctors_details_view_list" model="ir.ui.view">
+        <field name="name">doctors_details_list</field>
+        <field name="model">hospital.doctor</field>
+        <field name="arch" type="xml">
+            <list string="Patients">
+                <field name="name"/>
+                <field name="doctor_id"/>
+                <field name="date_of_joining"/>
+                <field name="specialization"/>
+                <field name="dob"/>
+                <field name="age"/>
+                <field name="blood_group"/>
+                <field name="gender"/>
+                <field name="contact_no"/>
+                <field name="email"/>
+                <field name="doctor_img"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_hospital_doctor_search" model="ir.ui.view">
+        <field name="name">hospital.doctor.search</field>
+        <field name="model">hospital.doctor</field>
+        <field name="arch" type="xml">
+            <search string="Search Doctors">
+                <field name="name"/>
+                <field name="specialization"/>
+                <filter name="group_by_specialization" string="Group by Specialization"
+                        context="{'group_by': 'specialization'}"/>
+            </search>
+        </field>
+    </record>
+    <record id="actions_doctors_details" model="ir.actions.act_window">
+        <field name="name">Doctors</field>
+        <field name="res_model">hospital.doctor</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Doctors
+            </p>
+            <p>
+                Create and manage the Doctors that will be managed by Odoo from here. Doctors or appointments can be
+                created and maintained from here.
+            </p>
+        </field>
+    </record>
+</odoo>
