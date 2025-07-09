@@ -25,5 +25,11 @@
             parent="hospital_patients_root"
             action="actions_doctors_details"
             sequence="2"/>
+         <menuitem
+            id="in_patients_main_menu"
+            name="In Patients"
+            parent="hospital_patients_root"
+            action="in_patients_action"
+            sequence="2"/>
     </data>
 </odoo>

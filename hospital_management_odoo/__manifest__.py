@@ -1,4 +1,5 @@
-# __manifest__.py
+# -*- coding: utf-8 -*-
+
 
 {
     'name': 'Hospital Management System',
@@ -32,6 +33,7 @@
         'views/patients_view.xml',
         'views/appointment.xml',
         'views/doctors.xml',
+        'views/in_patients.xml',
         'views/menus.xml',
         # 'views/doctor_view.xml',
         # 'views/ipd_view.xml',
